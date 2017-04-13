@@ -23,14 +23,19 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getSimpleName();
+/**
+ * 横向网格布局示例
+ * 数据源为设备中所有 App
+ * 演示 item 选定监听、item 点击监听、item 长按监听、遥控器其他按键监听
+ */
+public class StagGridActivity extends AppCompatActivity {
+    private static final String TAG = StagGridActivity.class.getSimpleName();
     private ScrollRecyclerView mScrollRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_stag_grid);
         mScrollRecyclerView = (ScrollRecyclerView) findViewById(R.id.scroll_recycler_view);
         List<AppBean> mList = getAllApk();
         AppBeanAdapter adapter = new AppBeanAdapter(this, mList);
@@ -38,16 +43,11 @@ public class MainActivity extends AppCompatActivity {
         mScrollRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,
                 StaggeredGridLayoutManager.HORIZONTAL));
 
-        int right = 20;
-        int bottom = 20;
+        int right = (int) getResources().getDimension(R.dimen.dp_20);
+        int bottom = (int) getResources().getDimension(R.dimen.dp_20);
         RecyclerView.ItemDecoration spacingInPixel = new SpaceItemDecoration(right, bottom);
         mScrollRecyclerView.addItemDecoration(spacingInPixel);
         mScrollRecyclerView.setAdapter(adapter);
-        adapter.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void OnItemSelected(View view, int position) {
-            }
-        });
         adapter.setOnItemSelectedListener(mOnItemSelectedListener);
         adapter.setOnItemClickListener(mOnItemClickListener);
         adapter.setOnItemLongClickListener(mOnItemLongClickListener);
