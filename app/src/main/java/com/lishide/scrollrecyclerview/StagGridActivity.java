@@ -36,17 +36,23 @@ public class StagGridActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stag_grid);
+        // 初始化 ScrollRecyclerView
         mScrollRecyclerView = (ScrollRecyclerView) findViewById(R.id.scroll_recycler_view);
+        // 获得数据，数据源为设备中所有 App
         List<AppBean> mList = getAllApk();
+        // 初始化适配器
         AppBeanAdapter adapter = new AppBeanAdapter(this, mList);
+        // 设置动画
         mScrollRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        // 设置布局管理器：瀑布流式
         mScrollRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,
                 StaggeredGridLayoutManager.HORIZONTAL));
-
+        // 根据需要设置间距等
         int right = (int) getResources().getDimension(R.dimen.dp_20);
         int bottom = (int) getResources().getDimension(R.dimen.dp_20);
         RecyclerView.ItemDecoration spacingInPixel = new SpaceItemDecoration(right, bottom);
         mScrollRecyclerView.addItemDecoration(spacingInPixel);
+        // 关联适配器
         mScrollRecyclerView.setAdapter(adapter);
         adapter.setOnItemSelectedListener(mOnItemSelectedListener);
         adapter.setOnItemClickListener(mOnItemClickListener);
