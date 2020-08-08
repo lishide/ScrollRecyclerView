@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="260dp"
     android:layout_height="230dp"
     android:background="@drawable/selector_home_apps"
@@ -12,7 +12,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher"/>
+        app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/tv_grid_item_name"
@@ -24,6 +24,6 @@
         android:gravity="center"
         android:maxLines="1"
         android:textColor="@android:color/white"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
 </LinearLayout>

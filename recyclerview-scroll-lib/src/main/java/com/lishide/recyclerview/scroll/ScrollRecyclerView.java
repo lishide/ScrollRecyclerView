@@ -1,13 +1,14 @@
 package com.lishide.recyclerview.scroll;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Scroller;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 public class ScrollRecyclerView extends RecyclerView {
     private static final String TAG = ScrollRecyclerView.class.getSimpleName();
@@ -178,7 +179,9 @@ public class ScrollRecyclerView extends RecyclerView {
             childWidth = firstView.getWidth();
             int preLastPos = endItems[0] - 1;
             View specialView = getChildAt(preLastPos);
-            if (specialView == null) return;
+            if (specialView == null) {
+                return;
+            }
             specialLeft = specialView.getLeft();
             specialRight = parentWidth - specialLeft;
             Log.d(TAG, "一屏的倒数第二行位置是:" + preLastPos + ", 父容器宽度:" + parentWidth

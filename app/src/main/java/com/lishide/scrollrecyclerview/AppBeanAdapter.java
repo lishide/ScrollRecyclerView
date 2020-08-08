@@ -1,7 +1,6 @@
 package com.lishide.scrollrecyclerview;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -9,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.lishide.recyclerview.scroll.listener.OnItemClickListener;
 import com.lishide.recyclerview.scroll.listener.OnItemKeyListener;
@@ -61,7 +62,7 @@ public class AppBeanAdapter extends RecyclerView.Adapter<AppBeanAdapter.ViewHold
                     currentPosition = (int) holder.itemView.getTag();
                     Log.d(TAG, "getTag=" + currentPosition);
                     Log.i(TAG, "The view hasFocus=" + v + ", holder.itemView=" + holder.itemView);
-                    mOnItemSelectedListener.OnItemSelected(v, currentPosition);
+                    mOnItemSelectedListener.onItemSelected(v, currentPosition);
                 }
             }
         });
@@ -76,7 +77,7 @@ public class AppBeanAdapter extends RecyclerView.Adapter<AppBeanAdapter.ViewHold
         holder.itemView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                mOnItemKeyListener.OnItemKey(v, keyCode, event, currentPosition);
+                mOnItemKeyListener.onItemKey(v, keyCode, event, currentPosition);
                 return false;
             }
         });

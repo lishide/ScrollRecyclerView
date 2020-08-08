@@ -4,13 +4,14 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.lishide.recyclerview.scroll.ScrollRecyclerView;
 import com.lishide.recyclerview.scroll.SpaceItemDecoration;
@@ -100,13 +101,15 @@ public class StagGridActivity extends AppCompatActivity {
             case KeyEvent.KEYCODE_DPAD_DOWN:
                 Log.d(TAG, "按下导航键<-下键->");
                 break;
+            default:
+                break;
         }
         return super.onKeyDown(keyCode, event);
     }
 
     OnItemSelectedListener mOnItemSelectedListener = new OnItemSelectedListener() {
         @Override
-        public void OnItemSelected(View view, int position) {
+        public void onItemSelected(View view, int position) {
             mScrollRecyclerView.smoothHorizontalScrollToNext(position);
         }
     };
@@ -127,7 +130,7 @@ public class StagGridActivity extends AppCompatActivity {
 
     OnItemKeyListener mOnItemKeyListener = new OnItemKeyListener() {
         @Override
-        public void OnItemKey(View view, int keyCode, KeyEvent event, int position) {
+        public void onItemKey(View view, int keyCode, KeyEvent event, int position) {
             if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
                 Log.d(TAG, "KEYCODE_DPAD_CENTER");
             } else if (keyCode == KeyEvent.KEYCODE_MENU) {
