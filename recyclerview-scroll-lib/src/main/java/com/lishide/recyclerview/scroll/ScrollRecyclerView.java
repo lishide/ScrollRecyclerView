@@ -10,9 +10,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+/**
+ * ScrollRecyclerView——RecyclerView 横向 / 纵向滚动网格布局。
+ * 适用于 Android 平板、Android TV 或其他定制化 Android 设备等，
+ * 使用遥控器方向导航键控制列表滑动及 item 选择状态。
+ *
+ * @author lishide
+ * @date 2017/4/12
+ */
 public class ScrollRecyclerView extends RecyclerView {
     private static final String TAG = ScrollRecyclerView.class.getSimpleName();
-    // 一个滚动对象
+    /**
+     * 一个滚动对象
+     */
     private Scroller mScroller;
     private int mLastX = 0;
     private int specialLeft, specialRight;
@@ -117,7 +127,7 @@ public class ScrollRecyclerView extends RecyclerView {
     /**
      * 当前位置需要向右平移
      *
-     * @param position
+     * @param position                 pos
      * @param firstVisibleItemPosition 可见的第一个Item的pos
      */
     private void leftScrollBy(int position, int firstVisibleItemPosition) {
@@ -133,7 +143,7 @@ public class ScrollRecyclerView extends RecyclerView {
     /**
      * 当前位置需要向左平移
      *
-     * @param position
+     * @param position                pos
      * @param lastVisibleItemPosition 可见的最后一个Item的pos
      */
     private void rightScrollBy(int position, int lastVisibleItemPosition) {
